@@ -11,8 +11,8 @@ fprintf(myDat, '%s', Header(FileName));
 
 %Body(PointData);
 
-fprintf(myDat, "'\n' ENDDAT '\n'");
-fclose(myDat);
+fprintf(myDat, "\n\nENDDAT\n");
+fclose('all');
 end
 
 function header = Header(FileName)
@@ -37,3 +37,4 @@ header = header + fscanf(f, '%c', Inf);
 fclose(f);
 
 end
+
