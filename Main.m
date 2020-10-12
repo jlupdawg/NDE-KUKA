@@ -5,31 +5,20 @@ Joseph Lupton
 Kuka Main Code
 %}
 
-%Info in format of [X,Y,Z,A,B,C,S,T,E1,E2,E3,E4,E5,E6] Check T and S?
-
 % Replace with real values
-top_right = [400,100,200,-15,78,-39,6,27,0,0,0,0,0,0];
-bottom_left = [100,100,100,-15,78,-39,6,27,0,0,0,0,0,0];
+%Info in format of [X,Y,Z,A,B,C,S,T,E1,E2,E3,E4,E5,E6] Check T and S?
+top_right = [400,100,200,20,25,30,8,42,0,0,0,0,0,0];
+top_left = [400,0,200,5,10,15,6,27,0,0,0,0,0,0];
+
+bottom_right = [400,100,100,0,5,10,8,42,0,0,0,0,0,0];
+bottom_left = [400,0,100,45,25,30,6,27,0,0,0,0,0,0];
+
 vel = 0.1; %m/s
-z_inc = 1; %mm
+inc = 5; %mm
+scan_dir = "Z"; %Y or Z using X as fixed base
+
 
 %% Data Creation
 
-rows = (top_right(3)-bottom_left(3))/z_inc +1;
-data = zeros(2*rows,14);
-
-%right_column
-for x = 1:rows
-    ref = (2*x)-1;
-   data(ref,:) = top_right;
-   data(ref,3) = data(ref,3) - (x-1)*z_inc;
-end
-
-%left_column
-for x = 1:rows
-    ref = (2*x);
-   data(ref,:) = data(ref-1,:);
-   data(ref,1) = bottom_left(1);
-end
-
-%% 
+A = [top_right; top_left; bottom_right; bottom_left];
+data_points = Get_data(A, inc, scan_dir);
