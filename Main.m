@@ -22,3 +22,4 @@ scan_dir = "Z"; %Y or Z using X as fixed base
 
 A = [top_right; top_left; bottom_right; bottom_left];
 data_points = Get_data(A, inc, scan_dir);
+

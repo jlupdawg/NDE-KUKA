@@ -1,4 +1,0 @@
-;ENDFOLD (USER EXT)
-;ENDFOLD (EXTERNAL DECLARATIONS)
-
-DECL BASIS_SUGG_T LAST_BASIS={POINT1[] "P2                      ",POINT2[] "P2                      ",CP_PARAMS[] "CPDAT0                  ",PTP_PARAMS[] "PDAT2                   ",CONT[] "C_DIS                   ",CP_VEL[] "2.0                     ",PTP_VEL[] "10                      ",SYNC_PARAMS[] "SYNCDAT                 ",SPL_NAME[] "S0                      ",A_PARAMS[] "ADAT0                   "}
