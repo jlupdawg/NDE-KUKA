@@ -13,13 +13,18 @@ top_left = [400,0,200,5,10,15,6,27,0,0,0,0,0,0];
 bottom_right = [400,100,100,0,5,10,8,42,0,0,0,0,0,0];
 bottom_left = [400,0,100,45,25,30,6,27,0,0,0,0,0,0];
 
-vel = 0.1; %m/s
-inc = 5; %mm
+velocity = 0.1; %m/s
+increment = 5; %mm
 scan_dir = "Z"; %Y or Z using X as fixed base
+program_name = "Trial2";
 
 
 %% Data Creation
 
 A = [top_right; top_left; bottom_right; bottom_left];
-data_points = Get_data(A, inc, scan_dir);
+data_points = Get_data(A, increment, scan_dir);
 
+
+%% Dat File Creation
+
+Dat_File(program_name, data_points)

@@ -66,7 +66,7 @@ for x = 1:rows
    data(l_ref,C) = (left_start(C)-left_end(C))*(1-pc) + left_end(C);
 end
 
-
+disp("Data Points Created Successfuly")
 
 end
 
