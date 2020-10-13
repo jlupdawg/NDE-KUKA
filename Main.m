@@ -24,7 +24,10 @@ program_name = "Trial2";
 A = [top_right; top_left; bottom_right; bottom_left];
 data_points = Get_data(A, increment, scan_dir);
 
-
 %% Dat File Creation
 
 Dat_File(program_name, data_points)
+
+%% Src File Creation
+
+Src_File(program_name, size(data_points,1), 0.01, false)

@@ -9,7 +9,7 @@ myDat = fopen(char(filename)+".dat", 'w');
 
 fprintf(myDat, '%s', Header(filename));
 fprintf(myDat, "\n\n");
-fprintf(myDat, '%s', Body(point_data,vel));
+fprintf(myDat, '%s', Body(point_data));
 
 fprintf(myDat, "\n\nENDDAT\n");
 fclose('all');
@@ -38,7 +38,7 @@ end
 
 
 function body_text = Body(point_data)
-%Body(point_data, vel)
+%Body(point_data)
 %   This function takes the point data and velocity and turns it into a
 %   .dat fold.Based on E6POS data.
 
