@@ -1,4 +1,4 @@
-function Src_File(filename, num_points,vel, wait)
+function Src_File(filename, num_points,vel, wait, wait_time)
 %Src_File(filename, point_data) 
 %   This function creates an .src file for the KUKA. The file is named based
 %   on filename and includes all of the points listed in point_data.
@@ -7,7 +7,7 @@ mySrc = fopen(char(filename)+".src", 'w');
 
 fprintf(mySrc, '%s', Header(filename));
 fprintf(mySrc, "\n\n");
-fprintf(mySrc, '%s', Body(num_points, vel, wait));
+fprintf(mySrc, '%s', Body(num_points, vel, wait, wait_time));
 
 fprintf(mySrc, "\n\nEND\n");
 fclose('all');
@@ -31,7 +31,7 @@ head_text = head_text + filename + '()';
 
 end
 
-function body_text = Body(num_points,vel, wait)
+function body_text = Body(num_points,vel, wait, wait_time)
 %Body(point_data)
 %   This function takes the point_data argument and creates linear commands
 %   for the data. This command should be modified if there are any
@@ -62,7 +62,7 @@ for x = 1:num_points
    body_text = body_text + Linear(lin_chunk, x,vel);
    
    if wait
-       body_text = body_text + Wait(wait_chunk);
+       body_text = body_text + Wait(wait_chunk, wait_time);
    end
    
 end
@@ -93,13 +93,12 @@ home_text = home_chunk;
 
 end
 
-
-function wait_text = Wait(wait_chunk)
+function wait_text = Wait(wait_chunk, wait_time)
 %Wait(wait_chunk)
 %   This function returns the command to go home. Later options will
 %   include %speed
-wait_text = wait_chunk;
 
+wait_text = sprintf(wait_chunk, wait_time, wait_time, wait_time);
 
 end
 

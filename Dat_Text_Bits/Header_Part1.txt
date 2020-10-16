@@ -2,5 +2,4 @@
 &REL 1
 &PARAM EDITMASK = *
 &PARAM TEMPLATE = C:\KRC\Roboter\Template\vorgabe
-
 DEFDAT 

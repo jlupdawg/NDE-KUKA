@@ -5,8 +5,7 @@ function data = Get_data(init_points, inc, scan_dir)
 %   mm. For right now, scan_dir is limited to the Y and Z directions with X
 %   held constant.
 
-Y = 2; Z = 3; A = 4; B = 5; C = 6;
-
+X = 1; Y = 2; Z = 3; A = 4; B = 5; C = 6;
 top_right = init_points(1,:);
 top_left = init_points(2,:);
 bottom_right = init_points(3,:);
@@ -29,6 +28,16 @@ elseif scan_dir == "Y"
 
     left_start = bottom_left;
     left_end = bottom_right;
+    
+elseif scan_dir == "X"
+    scan_direction = X;
+
+    right_start = top_left;
+    right_end = top_right;
+
+    left_start = bottom_left;
+    left_end = bottom_right;
+    
 else 
     disp("Invalid Option. Using Z for scan")
     scan_direction = Z;
@@ -40,8 +49,7 @@ else
     left_end = bottom_left;
 end
 
-rows = abs(right_start(scan_direction)-left_end(scan_direction))/inc + 1;
-
+rows = round(abs((right_start(scan_direction)-left_end(scan_direction))/inc),0) + 1;
 data = zeros(2*rows,14);
 
 for x = 1:rows
@@ -64,6 +72,12 @@ for x = 1:rows
    data(l_ref,A) = (left_start(A)-left_end(A))*(1-pc) + left_end(A);
    data(l_ref,B) = (left_start(B)-left_end(B))*(1-pc) + left_end(B);
    data(l_ref,C) = (left_start(C)-left_end(C))*(1-pc) + left_end(C);
+end
+
+for x = 3:4:rows*2
+    temp = data(x,:);
+    data(x,:) = data(x+1,:);
+    data(x+1,:) = temp;
 end
 
 disp("Data Points Created Successfuly")
