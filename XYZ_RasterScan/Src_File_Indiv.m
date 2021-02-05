@@ -1,4 +1,4 @@
-function Src_File(filename, num_points,vel, wait, wait_time)
+function Src_File_Indiv(filename, num_points,vel, wait, wait_time)
 %Src_File(filename, point_data) 
 %   This function creates an .src file for the KUKA. The file is named based
 %   on filename and includes all of the points listed in point_data.
